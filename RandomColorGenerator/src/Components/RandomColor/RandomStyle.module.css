@@ -1,0 +1,15 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.container button {
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+}
+
+.container button:active {
+  background-color: red;
+}
