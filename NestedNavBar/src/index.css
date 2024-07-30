@@ -1,0 +1,84 @@
+/* 
+
+.treeview_container {
+    background-color: red;
+    padding: 2rem;
+    width: 30%;
+    height: 100vh;
+    margin-top: 4rem;
+    border-top-right-radius: 20px;
+}
+
+.menu-list-container {
+    list-style: none;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .menu-list-container li {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'poppins', sans-serif;
+}
+
+
+
+
+.treeview_container {
+    background-color: #1d3557;
+    color: #f1faee;
+    width: 250px;
+    height: 100vh;
+    padding: 2rem 4rem;
+
+}
+
+.label_icon_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    cursor: pointer;
+}
+
+
+.menu-list-container {
+    list-style: none;
+}
+
+.item_label {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.show_hide_icon {
+    font-size: 2.6rem;
+    font-weight: 500;
+}
+
+.subSection {
+    margin-left: 2.6rem;
+    color: #e63946;
+}
+
+.subSection .item_label {
+    font-size: 1.6rem;
+    text-transform: none;
+}
+
+.subSection .show_hide_icon {
+    font-size: 2.2rem;
+}
