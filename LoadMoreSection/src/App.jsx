@@ -6,8 +6,7 @@ function App() {
   const [count, setCount] = useState(0);
   const hasFetchedInitially = useRef(false);
   const [category, setCategory] = useState("");
-
-  console.log(hasFetchedInitially.current);
+  const [filteredProducts, setFilterProducts] = useState([]);
 
   async function fetchProducts() {
     try {
@@ -40,14 +39,19 @@ function App() {
   }, []);
 
   function handleSearchInputChange(event) {
-    setCategory(event.target.value);
-    const copiedProd = [...products];
-    const filteredProdutcs = copiedProd.filter(
-      (product) => product.category === event.target.value
-    );
-    console.log(filteredProdutcs);
+    const searchText = event.target.value.toLowerCase();
+    setCategory(searchText);
+
+    setFilterProducts(() => {
+      return products.filter(
+        (product) =>
+          product.title.toLowerCase().includes(category) ||
+          product.category.toLowerCase().includes(category)
+      );
+    });
   }
-  console.log(category);
+
+  console.log(products);
 
   useEffect(() => {
     if (hasFetchedInitially.current) {
@@ -78,8 +82,8 @@ function App() {
         />
 
         <ul className="items">
-          {products.length > 0 &&
-            products.map((product) => (
+          {(filteredProducts.length > 0 ? filteredProducts : products).map(
+            (product) => (
               <li key={product.id} className="single_item">
                 <button>
                   <img src={product.thumbnail} alt={product.description} />
@@ -87,16 +91,18 @@ function App() {
                   <p>${product.price}</p>
                 </button>
               </li>
-            ))}
+            )
+          )}
         </ul>
 
-        {products.length === 100 ? (
-          <p>You have viewed all items.</p>
-        ) : (
-          <button className="loadmore_btn" onClick={handleLoadMore}>
-            Load More
-          </button>
-        )}
+        {products.length === 100 && <p>You have viewed all items.</p>}
+        <button
+          disabled={products.length === 100}
+          className="loadmore_btn"
+          onClick={handleLoadMore}
+        >
+          Load More
+        </button>
       </section>
     </>
   );
